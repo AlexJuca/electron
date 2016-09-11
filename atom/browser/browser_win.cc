@@ -248,6 +248,24 @@ bool Browser::IsDefaultProtocolClient(const std::string& protocol,
   return keyVal == exe;
 }
 
+std::string Browser::GetColorizationColor() {
+  HKEY root = HKEY_CURRENT_USER;
+  base::string16 keyPath = base::UTF8ToUTF16("Software\\Microsoft\\Windows\\DWM");
+  base::win::RegKey key;
+  if (FAILED(key.Open(root, keyPath.c_str(), KEY_ALL_ACCESS)))
+    // Key doesn't exist, something went wrong return an empty string
+    return "";
+
+  DWORD keyVal;
+  if (FAILED(key.ReadValueDW(L"ColorizationColor", &keyVal)))
+    // Failed to read the key, something went wrong return an empty string
+    return "";
+
+  std::ostringstream stream;
+  stream << std::hex << keyVal;
+  return stream.str();
+}
+
 bool Browser::SetBadgeCount(int count) {
   return false;
 }

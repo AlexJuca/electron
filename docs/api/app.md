@@ -852,6 +852,19 @@ correctly.
 
 **Note:** This will not affect `process.argv`.
 
+### `app.getColorizationColor()` _Windows_
+
+Returns the users current system wide color preference in the form of an ARGB
+hexadecimal string.
+
+```js
+const color = app.getColorizationColor() // `"aabbccdd"`
+const alpha = color.substr(0, 2); // "aa"
+const red = color.substr(2, 2); // "bb"
+const green = color.substr(4, 2); // "cc"
+const blue = color.substr(6, 2); // "dd"
+```
+
 ### `app.dock.bounce([type])` _macOS_
 
 * `type` String (optional) - Can be `critical` or `informational`. The default is
