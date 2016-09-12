@@ -248,7 +248,7 @@ bool Browser::IsDefaultProtocolClient(const std::string& protocol,
   return keyVal == exe;
 }
 
-std::string Browser::GetColorizationColor() {
+std::string Browser::GetSystemAccentColor() {
   HKEY root = HKEY_CURRENT_USER;
   base::string16 keyPath = base::UTF8ToUTF16("Software\\Microsoft\\Windows\\DWM");
   base::win::RegKey key;

@@ -844,7 +844,7 @@ void App::BuildPrototype(
       .SetMethod("setUserTasks", base::Bind(&Browser::SetUserTasks, browser))
       .SetMethod("getJumpListSettings", &App::GetJumpListSettings)
       .SetMethod("setJumpList", &App::SetJumpList)
-      .SetMethod("getColorizationColor", base::Bind(&Browser::GetColorizationColor, browser))
+      .SetMethod("getSystemAccentColor", base::Bind(&Browser::GetSystemAccentColor, browser))
 #endif
 #if defined(OS_LINUX)
       .SetMethod("isUnityRunning",

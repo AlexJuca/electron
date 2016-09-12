@@ -586,7 +586,7 @@ replaced by the standard Jump List for the app (managed by Windows).
   omitted.
 * `items` Array - Array of `JumpListItem` objects if `type` is `tasks` or
   `custom`, otherwise it should be omitted.
-          
+
 **Note:** If a `JumpListCategory` object has neither the `type` nor the `name`
 property set then its `type` is assumed to be `tasks`. If the `name` property
 is set but the `type` property is omitted then the `type` is assumed to be
@@ -627,7 +627,7 @@ items can be obtained using `app.getJumpListSettings()`.
   resource file contains multiple icons this value can be used to specify the
   zero-based index of the icon that should be displayed for this task. If a
   resource file contains only one icon, this property should be set to zero.
- 
+
 Here's a very simple example of creating a custom Jump List:
 
 ```javascript
@@ -852,13 +852,13 @@ correctly.
 
 **Note:** This will not affect `process.argv`.
 
-### `app.getColorizationColor()` _Windows_
+### `app.getSystemAccentColor()` _Windows_
 
 Returns the users current system wide color preference in the form of an ARGB
 hexadecimal string.
 
 ```js
-const color = app.getColorizationColor() // `"aabbccdd"`
+const color = app.getSystemAccentColor() // `"aabbccdd"`
 const alpha = color.substr(0, 2); // "aa"
 const red = color.substr(2, 2); // "bb"
 const green = color.substr(4, 2); // "cc"

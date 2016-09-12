@@ -161,7 +161,7 @@ class Browser : public WindowListObserver {
   // Add a custom task to jump list.
   bool SetUserTasks(const std::vector<UserTask>& tasks);
 
-  std::string GetColorizationColor();
+  std::string GetSystemAccentColor();
 
   // Returns the application user model ID, if there isn't one, then create
   // one from app's name.
