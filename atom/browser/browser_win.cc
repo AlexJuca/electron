@@ -250,7 +250,8 @@ bool Browser::IsDefaultProtocolClient(const std::string& protocol,
 
 std::string Browser::GetSystemAccentColor() {
   HKEY root = HKEY_CURRENT_USER;
-  base::string16 keyPath = base::UTF8ToUTF16("Software\\Microsoft\\Windows\\DWM");
+  base::string16 keyPath = base::UTF8ToUTF16(
+    "Software\\Microsoft\\Windows\\DWM");
   base::win::RegKey key;
   if (FAILED(key.Open(root, keyPath.c_str(), KEY_ALL_ACCESS)))
     // Key doesn't exist, something went wrong return an empty string
