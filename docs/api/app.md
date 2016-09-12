@@ -859,10 +859,10 @@ hexadecimal string.
 
 ```js
 const color = app.getSystemAccentColor() // `"aabbccdd"`
-const red = color.substr(0, 2); // "aa"
-const green = color.substr(2, 2); // "bb"
-const blue = color.substr(4, 2); // "cc"
-const alpha = color.substr(6, 2); // "dd"
+const red = color.substr(0, 2) // "aa"
+const green = color.substr(2, 2) // "bb"
+const blue = color.substr(4, 2) // "cc"
+const alpha = color.substr(6, 2) // "dd"
 ```
 
 ### `app.dock.bounce([type])` _macOS_
