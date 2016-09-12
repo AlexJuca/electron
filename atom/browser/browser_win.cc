@@ -264,7 +264,8 @@ std::string Browser::GetSystemAccentColor() {
 
   std::ostringstream stream;
   stream << std::hex << keyVal;
-  return stream.str();
+  std::string hexColor = stream.str();
+  return hexColor.substr(2) + hexColor.substr(0, 2);
 }
 
 bool Browser::SetBadgeCount(int count) {
