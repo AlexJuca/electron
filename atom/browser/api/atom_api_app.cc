@@ -740,7 +740,12 @@ void App::OnCertificateManagerModelCreated(
 
 #if defined(OS_WIN)
 void App::OnSystemAccentColorChanged(const std::string& new_color) {
-  Emit("system-accent-color-changed", new_color);
+  // This event is recieved once for every open window
+  // So we avoid duplicate events
+  if (current_color_ != new_color) {
+    Emit("system-accent-color-changed", new_color);
+    current_color_ = new_color;
+  }
 }
 
 v8::Local<v8::Value> App::GetJumpListSettings() {

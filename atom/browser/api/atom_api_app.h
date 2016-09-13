@@ -84,6 +84,8 @@ class App : public AtomBrowserClient::Delegate,
       const base::DictionaryValue& user_info) override;
 #endif
 #if defined(OS_WIN)
+  std::string current_color_;
+
   void OnSystemAccentColorChanged(const std::string& new_color) override;
 #endif
 
