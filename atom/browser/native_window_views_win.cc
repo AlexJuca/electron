@@ -95,7 +95,8 @@ bool NativeWindowViews::PreHandleMSG(
       std::ostringstream stream;
       stream << std::hex << new_color;
       std::string hexColor = stream.str();
-      Browser::Get()->OnSystemAccentColorChanged(hexColor.substr(2) + hexColor.substr(0, 2));
+      Browser::Get()->OnSystemAccentColorChanged(
+        hexColor.substr(2) + hexColor.substr(0, 2));
       return false;
     }
     case WM_GETOBJECT: {

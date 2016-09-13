@@ -252,8 +252,7 @@ std::string Browser::GetSystemAccentColor() {
   DWORD color = 0;
   BOOL opaque = FALSE;
 
-  if (FAILED(dwmGetColorizationColor(&color, &opaque)))
-  {
+  if (FAILED(dwmGetColorizationColor(&color, &opaque))) {
     return "";
   }
 
