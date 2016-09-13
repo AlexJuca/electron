@@ -739,6 +739,10 @@ void App::OnCertificateManagerModelCreated(
 #endif
 
 #if defined(OS_WIN)
+void App::OnSystemAccentColorChanged(const std::string& new_color) {
+  Emit("system-accent-color-changed", new_color);
+}
+
 v8::Local<v8::Value> App::GetJumpListSettings() {
   JumpList jump_list(Browser::Get()->GetAppUserModelID());
 

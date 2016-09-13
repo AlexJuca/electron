@@ -167,6 +167,13 @@ class Browser : public WindowListObserver {
   // one from app's name.
   // The returned string managed by Browser, and should not be modified.
   PCWSTR GetAppUserModelID();
+
+  typedef HRESULT (STDAPICALLTYPE *DwmGetColorizationColor)(DWORD *, BOOL *);
+  DwmGetColorizationColor dwmGetColorizationColor =
+    (DwmGetColorizationColor) GetProcAddress(LoadLibraryW(L"dwmapi.dll"),
+                                            "DwmGetColorizationColor");
+
+  void OnSystemAccentColorChanged(const std::string& new_color);
 #endif  // defined(OS_WIN)
 
 #if defined(OS_LINUX)

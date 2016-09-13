@@ -249,23 +249,24 @@ bool Browser::IsDefaultProtocolClient(const std::string& protocol,
 }
 
 std::string Browser::GetSystemAccentColor() {
-  HKEY root = HKEY_CURRENT_USER;
-  base::string16 keyPath = base::UTF8ToUTF16(
-    "Software\\Microsoft\\Windows\\DWM");
-  base::win::RegKey key;
-  if (FAILED(key.Open(root, keyPath.c_str(), KEY_ALL_ACCESS)))
-    // Key doesn't exist, something went wrong return an empty string
-    return "";
+  DWORD color = 0;
+  BOOL opaque = FALSE;
 
-  DWORD keyVal;
-  if (FAILED(key.ReadValueDW(L"ColorizationColor", &keyVal)))
-    // Failed to read the key, something went wrong return an empty string
+  if (FAILED(dwmGetColorizationColor(&color, &opaque)))
+  {
     return "";
+  }
 
   std::ostringstream stream;
-  stream << std::hex << keyVal;
+  stream << std::hex << color;
   std::string hexColor = stream.str();
   return hexColor.substr(2) + hexColor.substr(0, 2);
+}
+
+void Browser::OnSystemAccentColorChanged(const std::string& new_color) {
+  FOR_EACH_OBSERVER(BrowserObserver,
+                    observers_,
+                    OnSystemAccentColorChanged(new_color));
 }
 
 bool Browser::SetBadgeCount(int count) {

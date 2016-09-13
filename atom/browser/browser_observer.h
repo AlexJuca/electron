@@ -62,6 +62,9 @@ class BrowserObserver {
       const std::string& type,
       const base::DictionaryValue& user_info) {}
 #endif
+#if defined(OS_WIN)
+  virtual void OnSystemAccentColorChanged(const std::string& new_color) {}
+#endif
 
  protected:
   virtual ~BrowserObserver() {}

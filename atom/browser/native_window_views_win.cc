@@ -90,6 +90,14 @@ bool NativeWindowViews::PreHandleMSG(
     // mode if it isn't already, always say we didn't handle the message
     // because we still want Chromium to handle returning the actual
     // accessibility object.
+    case WM_DWMCOLORIZATIONCOLORCHANGED: {
+      DWORD new_color = (DWORD) w_param;
+      std::ostringstream stream;
+      stream << std::hex << new_color;
+      std::string hexColor = stream.str();
+      Browser::Get()->OnSystemAccentColorChanged(hexColor.substr(2) + hexColor.substr(0, 2));
+      return false;
+    }
     case WM_GETOBJECT: {
       const DWORD obj_id = static_cast<DWORD>(l_param);
       if (enabled_a11y_support_) return false;

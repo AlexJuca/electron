@@ -294,6 +294,14 @@ assistive technologies, such as screen readers, are enabled or disabled.
 See https://www.chromium.org/developers/design-documents/accessibility for more
 details.
 
+### Event: 'system-accent-color-changed' _Windows_
+
+Returns:
+
+* `event` Event
+* `newColor` String - The new RGBA color the user assigned to be there system
+accent color.
+
 ## Methods
 
 The `app` object has the following methods:
